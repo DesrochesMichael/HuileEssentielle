@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Mes huiles essentielles</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+	<nav th:replace="navigation.html"></nav>
+	<h2>Listes de toute les huiles</h2>
+
+	<div class="container">
+		<table class="table table-striped">
+
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Libelle</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col">Plante associé</th>
+					<th scope="col">Propriétés</th>
+					<th scope="col">Utilisations</th>
+					<th scope="col">Synthèse</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+
+			</thead>
+			<tbody>
+
+				<tr th:each="HuileEssentielle: ${huiles}">
+					<td scope="row" th:text="${HuileEssentielle.libelle}"></td>
+
+					<td><ul th:each="categorie : ${HuileEssentielle?.categories }">
+							<li th:text="${categorie.libelle}"></li>
+						</ul></td>
+
+					<td scope="row" th:text="${HuileEssentielle?.plante?.libelle}"></td>
+
+					<td scope="row"><ul
+							th:each="propriet : ${HuileEssentielle?.proprietes}">
+							<li th:text="${propriete.libelle}"></li>
+						</ul></td>
+
+					<td scope="row"
+						th:text="${huileessentielle?.utilisations?.libelle}"></td>
+
+					<td scope="row">lien vers syntheses</td>
+
+					<td><a class="btn btn-info"
+						th:href="@{HuileEssetnielleDetail(id=${HuileEssentielle.id})}">
+							Detail de l'huile</a></td>
+
+					<td><a class="btn btn-warning"
+						th:href="@{HuileEssentielleEdit(id=${HuileEssentielle.id})}">
+							Editer</a></td>
+
+					<td><a class="btn btn-danger"
+						th:href="@{HuileEssentielleSup(id=${HuileEssentielle.id})}">
+							Supprimer</a></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+		<a href=HuileEssentielleAjout class="btn btn-success">Ajouter une
+			huile</a>
+
+	</div>
+</body>
+</html>
