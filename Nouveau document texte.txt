@@ -1,1 +1,8 @@
-https://stackoverflow.com/questions/29646133/posting-data-with-many-to-one-relationship-using-thymeleaf
+
+correction : 
+- select met un doublon sur l'edit (ajout he)
+- pete sur ajout quand plante null
+
+ajout :
+- plante detail
+- plante edit

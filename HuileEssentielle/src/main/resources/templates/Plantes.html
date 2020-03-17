@@ -14,6 +14,49 @@
 	<nav th:replace="navigation.html"></nav>
 	<h2>Listes de toute les plantes</h2>
 
+	<div class="container">
 
+		<table class="table table-striped">
+
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Libelle</th>
+					<th scope="col">Libelle latin</th>
+					<th scope="col">Huile ?</th>
+					<th scope="col">Location</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+				<tr th:each="Plante: ${Plantes}">
+					<td scope="row" th:text="${Plante.libelle}"></td>
+
+					<td scope="row" th:text="${Plante.libelle_latin}"></td>
+
+					<td scope="row">rajouter l'huile relié ?</td>
+
+					<td scope="row" th:text="${Plante.location}"></td>
+
+
+					<td><a class="btn btn-primary"
+						th:href="@{PlanteDetail(id=${Plante.id})}"> Detail de l'huile</a></td>
+
+					<td><a class="btn btn-warning"
+						th:href="@{PlanteEdit(id=${Plante.id})}"> Editer</a></td>
+
+					<td><a class="btn btn-danger"
+						th:href="@{PlanteSup(id=${Plante.id})}"> Supprimer</a></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+		<a href=PlanteAjout class="btn btn-success">Ajouter une
+			huile</a>
+	</div>
 
 </body>

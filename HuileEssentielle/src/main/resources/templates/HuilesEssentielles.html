@@ -15,6 +15,7 @@
 	<h2>Listes de toute les huiles</h2>
 
 	<div class="container">
+
 		<table class="table table-striped">
 
 			<thead class="thead-dark">
@@ -31,29 +32,31 @@
 				</tr>
 
 			</thead>
-			<tbody>
 
+			<tbody>
 				<tr th:each="HuileEssentielle: ${huiles}">
 					<td scope="row" th:text="${HuileEssentielle.libelle}"></td>
 
-					<td><ul th:each="categorie : ${HuileEssentielle?.categories }">
+					<td><ul th:each="categorie : ${HuileEssentielle?.categories}">
 							<li th:text="${categorie.libelle}"></li>
 						</ul></td>
 
 					<td scope="row" th:text="${HuileEssentielle?.plante?.libelle}"></td>
 
 					<td scope="row"><ul
-							th:each="propriet : ${HuileEssentielle?.proprietes}">
+							th:each="propriete : ${HuileEssentielle?.proprietes}">
 							<li th:text="${propriete.libelle}"></li>
 						</ul></td>
 
-					<td scope="row"
-						th:text="${huileessentielle?.utilisations?.libelle}"></td>
+					<td scope="row"><ul
+							th:each="utilisation : ${HuileEssentielle?.utilisations}">
+							<li th:text="${utilisation.libelle}"></li>
+						</ul></td>
 
 					<td scope="row">lien vers syntheses</td>
 
-					<td><a class="btn btn-info"
-						th:href="@{HuileEssetnielleDetail(id=${HuileEssentielle.id})}">
+					<td><a class="btn btn-primary"
+						th:href="@{HuileEssentielleDetail(id=${HuileEssentielle.id})}">
 							Detail de l'huile</a></td>
 
 					<td><a class="btn btn-warning"
@@ -68,10 +71,8 @@
 				</tr>
 			</tbody>
 		</table>
-
 		<a href=HuileEssentielleAjout class="btn btn-success">Ajouter une
 			huile</a>
-
 	</div>
 </body>
 </html>

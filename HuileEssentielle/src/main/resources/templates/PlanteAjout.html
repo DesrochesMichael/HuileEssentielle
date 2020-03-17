@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Mes huiles essentielles</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+	<nav th:replace="navigation.html"></nav>
+	<h2>Page d'ajout d'une plante</h2>
+
+	<form method="post">
+		<fieldset>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td scope="row">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">Libelle
+									:</span>
+							</div> <input type="text" name="libelle" th:value="${Plante?.libelle}">
+						</td>
+						
+						<td scope="row">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">Libelle latin
+									:</span>
+							</div> <input type="text" name="libelle_latin" th:value="${Plante?.libelle_latin}">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<button class="btn btn-success" type="submit"
+					th:if="${Plante.id==0}">add me !</button>
+				<button class="btn btn-warning" type="submit"
+					th:if="${Plante.id!=0}">mod me !</button>
+				<a class="btn btn-info" href="HuilesEssentielles">Retour </a>
+			</div>
+		</fieldset>
+	</form>
+
+</body>
+</html>
