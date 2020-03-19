@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.perso.huile.DAO.IDAOPlante;
 import fr.perso.huile.model.Plante;
@@ -34,4 +35,27 @@ public class PlanteController {
 		return "redirect:Plantes";
 	}
 
+	@GetMapping("/PlanteEdit")
+	public String getEdit(@RequestParam int id, Model model) {
+		model.addAttribute("Plante", daoPlante.findById(id).get());
+		return "PlanteAjout";
+	}
+
+	@PostMapping("/PlanteEdit")
+	public String postEdit(@ModelAttribute Plante plante) {
+		daoPlante.save(plante);
+		return "redirect:Plantes";
+	}
+
+	@GetMapping("/PlanteSup")
+	public String getSup(@RequestParam int id) {
+		daoPlante.deleteById(id);
+		return "redirect:Plantes";
+	}
+
+	@GetMapping("/PlanteDetail")
+	public String getDetail(@RequestParam int id, Model model) {
+		model.addAttribute("Plante", daoPlante.findById(id).get());
+		return "PlanteDetail";
+	}
 }

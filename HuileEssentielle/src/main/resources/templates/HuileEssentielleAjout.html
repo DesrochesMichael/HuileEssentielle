@@ -7,6 +7,7 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
+<link  rel="stylesheet" href="layout.css">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
 	<h2>Page d'ajout d'une huile essentielle</h2>
 
 
-	<form action="#" th:action="@{/HuileEssentielleAjout}"
+	<form action="#" 
 		th:object="${wrap}" method="post">
 		<fieldset>
 			<table class="table table-striped">
@@ -47,7 +48,7 @@
 								<span class="input-group-text" id="basic-addon3">Plante :</span>
 							</div>
 							<select name="plante">
-								<option value="0">Pas de plante associé</option>
+								<option value="0">Non renseigné</option>
 								<option th:each="plante : ${plantes}" th:value="${ plante.id }"
 									th:text="${ plante.libelle }"></option>
 							</select>
@@ -97,9 +98,9 @@
 			</table>
 			<div>
 				<button class="btn btn-success" type="submit"
-					th:if="${HuileEssentielle.id==0}">add me !</button>
+					th:if="${HuileEssentielle.id==0}" th:action="@{/HuileEssentielleAjout}">add me !</button>
 				<button class="btn btn-warning" type="submit"
-					th:if="${HuileEssentielle.id!=0}">mod me !</button>
+					th:if="${HuileEssentielle.id!=0}" th:action="@{/HuileEssentielleEdit}">mod me !</button>
 				<a class="btn btn-info" href="HuilesEssentielles">Retour </a>
 			</div>
 		</fieldset>

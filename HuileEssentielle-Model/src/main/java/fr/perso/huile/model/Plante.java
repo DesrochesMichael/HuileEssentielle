@@ -1,10 +1,13 @@
 package fr.perso.huile.model;
 
+import java.sql.Blob;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,9 +28,9 @@ public class Plante {
 	@JsonView({ Views.HuileEssentielle.class, Views.Plante.class })
 	private String libelle;
 
-	@Column(name = "plante_libelle_latin")
+	@Column(name = "plante_libelleLatin")
 	@JsonView(Views.Plante.class)
-	private String libelle_latin;
+	private String libelleLatin;
 
 	@OneToOne(mappedBy = "plante")
 	@JsonView(Views.Plante.class)
@@ -35,7 +38,14 @@ public class Plante {
 
 	@Column(name = "plante_location")
 	@JsonView(Views.Common.class)
-	private String location;
+	private String provenance;
+
+	@Column(name = "plante_detail")
+	@JsonView(Views.Common.class)
+	private String detail;
+
+	@Column(name = "image")
+	private String image;
 
 	public int getId() {
 		return id;
@@ -53,12 +63,12 @@ public class Plante {
 		this.libelle = libelle;
 	}
 
-	public String getLibelle_latin() {
-		return libelle_latin;
+	public String getLibelleLatin() {
+		return libelleLatin;
 	}
 
-	public void setLibelle_latin(String libelle_latin) {
-		this.libelle_latin = libelle_latin;
+	public void setLibelleLatin(String libelleLatin) {
+		this.libelleLatin = libelleLatin;
 	}
 
 	public HuileEssentielle getHuile() {
@@ -69,13 +79,28 @@ public class Plante {
 		this.huile = huile;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getProvenance() {
+		return provenance;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setProvenance(String provenance) {
+		this.provenance = provenance;
 	}
 
-	
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }

@@ -1,5 +1,7 @@
 package fr.perso.huile.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,7 +59,7 @@ public class HuileEssentielleController {
 
 		}
 		model.addAttribute("wrap", wrap);
-		model.addAttribute("plantes", daoPlante.findAll());
+		model.addAttribute("plantes", daoPlante.findByHuileIsNull());
 		model.addAttribute("plante", new Plante());
 		return "HuileEssentielleAjout";
 	}
@@ -65,6 +67,13 @@ public class HuileEssentielleController {
 	@GetMapping("/HuileEssentielleEdit")
 	public String getEdit(Model model, @RequestParam int id) {
 		HuileEssentielle huile = daoHuile.findById(id).get();
+
+		if (huile.getPlante() == null) {
+			Plante plante = new Plante();
+			plante.setLibelle("Non renseigné");
+			huile.setPlante(plante);
+		}
+
 		model.addAttribute("HuileEssentielle", huile);
 		Wrapper wrap = new Wrapper();
 		wrap.setCategories(huile.getCategories());
@@ -72,8 +81,9 @@ public class HuileEssentielleController {
 		wrap.setProprietes(huile.getProprietes());
 		wrap.setUtilisations(huile.getUtilisations());
 		model.addAttribute("wrap", wrap);
-		model.addAttribute("plantes", daoPlante.findAll());
+		model.addAttribute("plantes", daoPlante.findByHuileIsNull());
 		model.addAttribute("plante", huile.getPlante());
+
 		return "HuileEssentielleAjout";
 	}
 
@@ -86,7 +96,6 @@ public class HuileEssentielleController {
 
 	@PostMapping("/HuileEssentielleEdit")
 	public String saveEdit(@ModelAttribute HuileEssentielle huile, @RequestParam int id) {
-		huile.setId(id);
 		daoHuile.save(huile);
 		return "redirect:HuilesEssentielles";
 	}

@@ -1,8 +1,11 @@
 
 correction : 
-- select met un doublon sur l'edit (ajout he)
-- pete sur ajout quand plante null
+- suprresion he supprime la plante et vice versa ?
+
+
 
 ajout :
-- plante detail
-- plante edit
+- background transparent
+- gestion prorpietes
+- gestion detail
+- gestion utilisations

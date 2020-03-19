@@ -7,6 +7,7 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
+<link  rel="stylesheet" href="layout.css">
 </head>
 
 <body>
@@ -23,7 +24,8 @@
 					<th scope="col">Libelle</th>
 					<th scope="col">Libelle latin</th>
 					<th scope="col">Huile ?</th>
-					<th scope="col">Location</th>
+					<th scope="col">Provenance</th>
+					<th scope="col">Detail</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
@@ -35,15 +37,16 @@
 				<tr th:each="Plante: ${Plantes}">
 					<td scope="row" th:text="${Plante.libelle}"></td>
 
-					<td scope="row" th:text="${Plante.libelle_latin}"></td>
+					<td scope="row" th:text="${Plante.libelleLatin}"></td>
 
 					<td scope="row">rajouter l'huile relié ?</td>
 
-					<td scope="row" th:text="${Plante.location}"></td>
-
+					<td scope="row" th:text="${Plante.provenance}"></td>
+					
+					<td scope="row" th:text="${Plante.detail}"></td>
 
 					<td><a class="btn btn-primary"
-						th:href="@{PlanteDetail(id=${Plante.id})}"> Detail de l'huile</a></td>
+						th:href="@{PlanteDetail(id=${Plante.id})}"> Detail de la plante</a></td>
 
 					<td><a class="btn btn-warning"
 						th:href="@{PlanteEdit(id=${Plante.id})}"> Editer</a></td>
@@ -56,7 +59,7 @@
 			</tbody>
 		</table>
 		<a href=PlanteAjout class="btn btn-success">Ajouter une
-			huile</a>
+			plante</a>
 	</div>
 
 </body>
