@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Mes huiles essentielles</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="layout.css">
+</head>
+
+<body>
+
+	<nav th:replace="navigation.html"></nav>
+	<h2>Détail des étapes de synthèse pour : [[${huile.libelle }]]</h2>
+
+	<div class="container">
+
+		<table class="table table-striped">
+
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Numéro de l'étape</th>
+					<th scope="col">Description</th>
+					<th scope="col">Image</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+				<tr th:each="Et: ${Etapes}">
+					<td scope="row" th:text="${Et.ordre}"></td>
+
+					<td scope="row" th:text="${Et.libelle}"></td>
+
+					<td scope="row"><img alt="Image de l'étape"
+						th:src="@{${Et.image}}" width="200px"></td>
+
+					<td><a class="btn btn-warning"
+						th:href="@{EtapesEdit(id=${Et.id})}"> Editer</a></td>
+
+					<td><a class="btn btn-danger"
+						th:href="@{EtapeSup(id=${Et.id})}"> Supprimer</a></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+		<form method="post">
+			<table class="table table-striped">
+
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Numéro de l'étape</th>
+						<th scope="col">Description</th>
+						<th scope="col">Image</th>
+						<th scope="col"></th>
+					</tr>
+
+				</thead>
+
+				<tbody>
+					<tr>
+						<td scope="row">
+
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">Numéro :</span>
+							</div> <input type="text" name="ordre" th:value="${Etape?.ordre}">
+
+						</td>
+
+						<td scope="row">
+
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">Description
+									:</span>
+							</div> <input type="text" name="libelle" th:value="${Etape?.libelle}">
+
+						</td>
+
+						<td scope="row">
+
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">URL de
+									l'image :</span>
+							</div> <input type="text" name="image" th:value="${Etape?.image}">
+
+						</td>
+
+						<td scope="row"><button class="btn btn-warning" type="submit" th:href="@{EtapesEdit(id=${Et?.id})}">mod
+								me !</button></td>
+
+					</tr>
+				</tbody>
+			</table>
+			<button class="btn btn-success" type="submit"
+				th:href="@{Etapes(id=${id})}">add me !</button>
+			<a class="btn btn-info" href="HuilesEssentielles">Retour </a>
+		</form>
+	</div>
+</body>
+</html>

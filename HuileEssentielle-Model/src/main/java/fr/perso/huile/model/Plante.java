@@ -44,7 +44,7 @@ public class Plante {
 	@JsonView(Views.Common.class)
 	private String detail;
 
-	@Column(name = "image")
+	@Column(name = "plante_image")
 	private String image;
 
 	public int getId() {

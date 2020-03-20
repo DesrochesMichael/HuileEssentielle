@@ -54,7 +54,9 @@
 							<li th:text="${utilisation.libelle}"></li>
 						</ul></td>
 
-					<td scope="row">lien vers syntheses</td>
+					<td scope="row"><a class="btn btn-primary"
+						th:href="@{Etapes(id=${HuileEssentielle.id})}">
+							Etapes</a></td>
 
 					<td><a class="btn btn-primary"
 						th:href="@{HuileEssentielleDetail(id=${HuileEssentielle.id})}">

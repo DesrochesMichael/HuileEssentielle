@@ -1,5 +1,6 @@
 package fr.perso.huile.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,13 +24,21 @@ public class Etape {
 	private int id;
 
 	@Column(name = "et_libelle", nullable = false)
-	@JsonView({Views.Etape.class,Views.HuileEssentielle.class })
+	@JsonView({ Views.Etape.class, Views.HuileEssentielle.class })
 	private String libelle;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "he_etapes")
 	@JsonView(Views.Etape.class)
 	private HuileEssentielle huile;
+
+	@Column(name = "et_ordre", nullable = false)
+	@JsonView(Views.Etape.class)
+	private int ordre;
+
+	@Column(name = "et_image", nullable = false)
+	@JsonView(Views.Etape.class)
+	private String image;
 
 	public int getId() {
 		return id;
@@ -55,5 +64,20 @@ public class Etape {
 		this.huile = huile;
 	}
 
-	
+	public int getOrdre() {
+		return ordre;
+	}
+
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }
