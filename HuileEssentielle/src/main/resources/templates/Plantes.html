@@ -7,7 +7,7 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<link  rel="stylesheet" href="layout.css">
+<link  rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
@@ -25,7 +25,6 @@
 					<th scope="col">Libelle latin</th>
 					<th scope="col">Huile ?</th>
 					<th scope="col">Provenance</th>
-					<th scope="col">Detail</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
@@ -42,8 +41,6 @@
 					<td scope="row">rajouter l'huile relié ?</td>
 
 					<td scope="row" th:text="${Plante.provenance}"></td>
-					
-					<td scope="row" th:text="${Plante.detail}"></td>
 
 					<td><a class="btn btn-primary"
 						th:href="@{PlanteDetail(id=${Plante.id})}"> Detail de la plante</a></td>

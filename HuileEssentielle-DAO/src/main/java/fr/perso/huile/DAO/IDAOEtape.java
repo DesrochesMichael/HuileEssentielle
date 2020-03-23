@@ -9,6 +9,6 @@ import fr.perso.huile.model.Etape;
 public interface IDAOEtape extends JpaRepository<Etape, Integer> {
 	
 	public List<Etape> findByHuileIdOrderByOrdreAsc(int id);
-	
-
+	 
+	public int findHuileEssentielleIdById(int id);
 }

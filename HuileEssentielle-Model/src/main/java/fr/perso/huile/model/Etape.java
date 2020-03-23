@@ -27,7 +27,7 @@ public class Etape {
 	@JsonView({ Views.Etape.class, Views.HuileEssentielle.class })
 	private String libelle;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne
 	@JoinColumn(name = "he_etapes")
 	@JsonView(Views.Etape.class)
 	private HuileEssentielle huile;
@@ -36,7 +36,7 @@ public class Etape {
 	@JsonView(Views.Etape.class)
 	private int ordre;
 
-	@Column(name = "et_image", nullable = false)
+	@Column(name = "et_image", nullable = true)
 	@JsonView(Views.Etape.class)
 	private String image;
 

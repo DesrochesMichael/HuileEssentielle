@@ -7,7 +7,8 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<link  rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="css/layout.css">
+<script defer type="module" src="js/PlanteAjout.js"></script>
 </head>
 
 <body>
@@ -26,32 +27,50 @@
 									:</span>
 							</div> <input type="text" name="libelle" th:value="${Plante?.libelle}">
 						</td>
-						
+
 						<td scope="row">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">Libelle latin
-									:</span>
-							</div> <input type="text" name="libelleLatin" th:value="${Plante?.libelleLatin}">
+								<span class="input-group-text" id="basic-addon3">Libelle
+									latin :</span>
+							</div> <input type="text" name="libelleLatin"
+							th:value="${Plante?.libelleLatin}">
 						</td>
-						
+
 						<td scope="row">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Provenance
 									:</span>
-							</div> <input type="text" name="provenance" th:value="${Plante?.provenance}">
+							</div> <input type="text" name="provenance"
+							th:value="${Plante?.provenance}">
 						</td>
-						
+
 						<td scope="row">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">Detail
-									:</span>
+								<span class="input-group-text" id="basic-addon3">Partie
+									utile :</span>
+							</div> <input type="text" name="partie"
+							th:value="${Plante?.partie}">
+						</td>
+
+
+						<td scope="row">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">Description
+									: </span>
+							</div> <input type="text" name="description"
+							th:value="${Plante?.description}">
+						</td>
+
+						<td scope="row">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon3">Detail :</span>
 							</div> <input type="text" name="detail" th:value="${Plante?.detail}">
 						</td>
-						
+
 						<td scope="row">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">URL de l'image
-									:</span>
+								<span class="input-group-text" id="basic-addon3">URL de
+									l'image :</span>
 							</div> <input type="text" name="image" th:value="${Plante?.image}">
 						</td>
 					</tr>

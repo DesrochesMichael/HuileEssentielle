@@ -41,7 +41,7 @@ public class EtapesController {
 		et.setLibelle(etape.getLibelle());
 		et.setImage(etape.getImage());
 		et.setOrdre(etape.getOrdre());
-		
+
 		daoEtape.save(et);
 
 		return "redirect:Etapes?id=" + id;
@@ -51,15 +51,26 @@ public class EtapesController {
 	public String getEdit(Model model, @RequestParam int id) {
 		Etape etape = daoEtape.findById(id).get();
 		model.addAttribute("Etape", etape);
-		model.addAttribute("Etapes", daoEtape.findByHuileIdOrderByOrdreAsc(id));
-		model.addAttribute("id", id);
-		model.addAttribute("huile", daoHuile.findById(id).get());
+		model.addAttribute("Etapes", daoEtape.findByHuileIdOrderByOrdreAsc(etape.getHuile().getId()));
+		model.addAttribute("id", etape.getHuile().getId());
+		model.addAttribute("huile", etape.getHuile());
 		return "Etapes";
 	}
 
+	@Transactional
 	@PostMapping("/EtapesEdit")
 	public String postEdit(@ModelAttribute Etape etape, @RequestParam int id) {
+		Etape et = daoEtape.findById(id).get();
+		etape.setHuile(et.getHuile());
 		daoEtape.save(etape);
-		return "redirect:Etapes?id=" + id;
+		return "redirect:Etapes?id=" + et.getHuile().getId();
 	}
+
+	@GetMapping("/EtapesSup")
+	public String getSup(@RequestParam int id) {
+		Etape et = daoEtape.findById(id).get();
+		daoEtape.deleteById(id);
+		return "redirect:Etapes?id=" + et.getHuile().getId();
+	}
+
 }

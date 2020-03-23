@@ -53,11 +53,11 @@ public class HuileEssentielleController {
 		Wrapper wrap = new Wrapper();
 		for (int i = 0; i < 3; i++) {
 			wrap.addPropriete(new Propriete());
-			wrap.addCategorie(new Categorie());
 			wrap.addUtilisation(new Utilisation());
 			wrap.addEtape(new Etape());
 
 		}
+		wrap.addCategorie(new Categorie());
 		model.addAttribute("wrap", wrap);
 		model.addAttribute("plantes", daoPlante.findByHuileIsNull());
 		model.addAttribute("plante", new Plante());

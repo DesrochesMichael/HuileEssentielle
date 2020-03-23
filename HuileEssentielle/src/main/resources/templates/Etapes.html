@@ -7,7 +7,7 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
 						th:href="@{EtapesEdit(id=${Et.id})}"> Editer</a></td>
 
 					<td><a class="btn btn-danger"
-						th:href="@{EtapeSup(id=${Et.id})}"> Supprimer</a></td>
+						th:href="@{EtapesSup(id=${Et.id})}"> Supprimer</a></td>
 
 
 				</tr>
@@ -65,11 +65,13 @@
 
 				<tbody>
 					<tr>
-						<td scope="row">
 
+						<td scope="row">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Numéro :</span>
-							</div> <input type="text" name="ordre" th:value="${Etape?.ordre}">
+							</div> <input type="text" name="ordre" th:if="${Etape.id==0}" value="1">
+							<input type="text" name="ordre" th:value="${Etape?.ordre}"
+							th:if="${Etape.id!=0}">
 
 						</td>
 
@@ -91,14 +93,15 @@
 
 						</td>
 
-						<td scope="row"><button class="btn btn-warning" type="submit" th:href="@{EtapesEdit(id=${Et?.id})}">mod
-								me !</button></td>
-
 					</tr>
 				</tbody>
 			</table>
 			<button class="btn btn-success" type="submit"
-				th:href="@{Etapes(id=${id})}">add me !</button>
+				th:href="@{Etapes(id=${id})}" th:if="${Etape?.id==0}">add
+				me !</button>
+			<button class="btn btn-warning" type="submit" th:if="${Etape?.id!=0}">mod
+				me !</button>
+			<a class="btn btn-danger" th:href="@{Etapes(id=${id})}" th:if="${Etape?.id!=0}">Annulation de l'édition </a>
 			<a class="btn btn-info" href="HuilesEssentielles">Retour </a>
 		</form>
 	</div>

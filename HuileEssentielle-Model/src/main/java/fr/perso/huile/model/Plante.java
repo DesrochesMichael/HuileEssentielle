@@ -46,7 +46,13 @@ public class Plante {
 
 	@Column(name = "plante_image")
 	private String image;
+	
+	@Column(name = "plante_description")
+	private String description;
 
+	@Column(name = "plante_partie")
+	private String partie;
+	
 	public int getId() {
 		return id;
 	}
@@ -102,5 +108,23 @@ public class Plante {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getPartie() {
+		return partie;
+	}
+
+	public void setPartie(String partie) {
+		this.partie = partie;
+	}
+
+
 
 }
